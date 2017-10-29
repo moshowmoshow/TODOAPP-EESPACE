@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'; 
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { ITodo } from '../interfaces/itodo';
 
@@ -27,6 +27,11 @@ export class TodoProvider {
 
   list(completed: boolean = false): Array<ITodo> {
     return this._dataSource.filter((todo: ITodo) => todo.completed === completed);
+  }
+
+  update(todo: ITodo) {
+    let index = this._dataSource.findIndex(saved => saved.date === todo.date);
+    this._dataSource[index] = todo;
   }
 
 }

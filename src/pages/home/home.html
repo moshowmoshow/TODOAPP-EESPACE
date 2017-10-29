@@ -22,12 +22,12 @@
   <h4>My Current Tasks</h4>
 
   <ion-list>
-    <ion-item *ngFor="let todo of todos">
+    <ion-item *ngFor="let todo of todos" >
       <ion-label>
         <h2>{{todo.title}}</h2>
         <p>{{todo.date | date:'medium'}}</p>
       </ion-label>
-      <ion-checkbox color="danger"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="todo.completed" color="danger" (ionChange)="markAsCompleted(todo)"></ion-checkbox>
     </ion-item>
   </ion-list>
 

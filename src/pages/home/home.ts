@@ -70,4 +70,11 @@ export class HomePage {
     modal.present();
   }
 
+  markAsCompleted(todo: ITodo) {
+    console.log("Todo is changed", todo);
+    this._todoProvider.update(todo);
+    // update our list
+    this.todos = this._todoProvider.list();
+  }
+
 }

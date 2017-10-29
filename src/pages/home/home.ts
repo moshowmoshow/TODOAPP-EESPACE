@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { CompletedPage } from '../completed/completed';
 
 @Component({
   selector: 'page-home',
@@ -7,7 +8,8 @@ import { NavController, AlertController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, private _alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private _alertCtrl: AlertController,
+    private _modalCtrl: ModalController) {
 
   }
 
@@ -49,6 +51,11 @@ export class HomePage {
    */
   private saveTask(title: string) {
     console.log("You just added ", title);
+  }
+
+  showCompletedTasks() {
+    let modal = this._modalCtrl.create(CompletedPage);
+    modal.present();
   }
 
 }

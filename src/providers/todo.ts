@@ -31,7 +31,7 @@ export class TodoProvider {
 
   update(todo: ITodo) {
     let index = this._dataSource.findIndex(saved => saved.date === todo.date);
-    this._dataSource[index] = todo;
+    this._dataSource[index] = todo ;
   }
 
 }

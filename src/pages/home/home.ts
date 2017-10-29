@@ -63,6 +63,8 @@ export class HomePage {
     // update our list
     this.todos = this._todoProvider.list();
 
+    console.log("done with refresh");
+
   }
 
   showCompletedTasks() {

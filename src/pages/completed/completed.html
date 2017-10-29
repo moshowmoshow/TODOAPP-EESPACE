@@ -20,5 +20,15 @@
 
 
 <ion-content padding>
+  
+    <ion-list>
+        <ion-item *ngFor="let todo of todos" >
+          <ion-label>
+            <h2>{{todo.title}}</h2>
+            <p>{{todo.date | date:'medium'}}</p>
+          </ion-label>
+          <ion-checkbox color="danger" (ionChange)="notCompleted(todo)"></ion-checkbox>
+        </ion-item>
+      </ion-list>
 
 </ion-content>

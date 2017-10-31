@@ -1,4 +1,6 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+This project is for a student trying to catch up with ionic
+
+![](screenshot/todo_app.gif)
 
 ## How to use this template
 

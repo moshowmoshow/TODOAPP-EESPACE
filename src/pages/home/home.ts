@@ -59,7 +59,7 @@ export class HomePage {
 
     let confirm = this._alertCtrl.create({
       title: 'Are you sure you want to delete?',
-      
+
       buttons: [
         {
           text: 'No',
@@ -72,19 +72,19 @@ export class HomePage {
           handler: () => {
             console.log(todo);
             this._todoProvider.delete(todo);
-        
+
             // update our list
             this.todos = this._todoProvider.list();
-            
-                console.log("done with refresh");
+
+            console.log("done with refresh");
           }
         }
       ]
     });
     confirm.present();
   }
-    
-  
+
+
   private saveTask(title: string) {
     console.log("You just added ", title);
     this._todoProvider.add({

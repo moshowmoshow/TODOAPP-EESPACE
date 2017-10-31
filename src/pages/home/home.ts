@@ -48,10 +48,21 @@ export class HomePage {
   }
 
 
+
   /**
    * this is used to save new task to our task list
    * @param title 
    */
+
+  private deleteTodo(todo) {
+    console.log(todo);
+    this._todoProvider.delete(todo);
+
+    // update our list
+    this.todos = this._todoProvider.list();
+    
+        console.log("done with refresh");
+  }
   private saveTask(title: string) {
     console.log("You just added ", title);
     this._todoProvider.add({

@@ -31,7 +31,7 @@
         <ion-checkbox [(ngModel)]="todo.completed" color="danger" (ionChange)="markAsCompleted(todo)"></ion-checkbox>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="deleteTodo(todo)">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>

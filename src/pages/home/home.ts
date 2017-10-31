@@ -9,6 +9,7 @@ import { ITodo } from '../../interfaces/itodo';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  [x: string]: any;
   todos: ITodo[] = []; // to hold all our todo from provider
 
   constructor(public navCtrl: NavController, private _alertCtrl: AlertController,
@@ -55,14 +56,35 @@ export class HomePage {
    */
 
   private deleteTodo(todo) {
-    console.log(todo);
-    this._todoProvider.delete(todo);
 
-    // update our list
-    this.todos = this._todoProvider.list();
-    
-        console.log("done with refresh");
+    let confirm = this._alertCtrl.create({
+      title: 'Are you sure you want to delete?',
+      
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log(todo);
+            this._todoProvider.delete(todo);
+        
+            // update our list
+            this.todos = this._todoProvider.list();
+            
+                console.log("done with refresh");
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
+    
+  
   private saveTask(title: string) {
     console.log("You just added ", title);
     this._todoProvider.add({

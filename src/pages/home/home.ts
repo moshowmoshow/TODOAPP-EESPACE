@@ -70,6 +70,12 @@ export class HomePage {
   showCompletedTasks() {
     let modal = this._modalCtrl.create(CompletedPage);
     modal.present();
+
+    modal.onWillDismiss(data => {
+      // update our list
+      this.todos = this._todoProvider.list();
+    });
+
   }
 
   markAsCompleted(todo: ITodo) {

@@ -34,6 +34,6 @@ export class CompletedPage {
     todo.completed = false;
     this._todoProvider.update(todo);
     // update our list
-    this.todos = this._todoProvider.list();
+    this.todos = this._todoProvider.list(true);
   }
 }

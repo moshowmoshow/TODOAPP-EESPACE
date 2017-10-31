@@ -10,15 +10,22 @@ import { ITodo } from '../interfaces/itodo';
 */
 @Injectable()
 export class TodoProvider {
-  private _dataSource: Array<ITodo> = [];
+  // private _dataSource: Array<ITodo> = [];
 
   constructor() {
     console.log('Hello TodoProvider Provider');
   }
 
   add(todo: ITodo) {
-    this._dataSource.push(todo);
-    console.log("Our List", this._dataSource);
+    //  this._dataSource.push(todo);
+
+    // get our processed todo from localstorage
+    let data = this._getTODO();
+    data.push(todo);
+
+    // save it back to our localstorage
+    this._setTodo(data);
+    // console.log("Our List", this._dataSource);
   }
 
   delete(todo: ITodo) {
@@ -26,12 +33,29 @@ export class TodoProvider {
   }
 
   list(completed: boolean = false): Array<ITodo> {
-    return this._dataSource.filter((todo: ITodo) => todo.completed === completed);
+    let data = this._getTODO();
+    return data.filter((todo: ITodo) => todo.completed === completed);
   }
 
   update(todo: ITodo) {
     let index = this._dataSource.findIndex(saved => saved.date === todo.date);
-    this._dataSource[index] = todo ;
+    this._dataSource[index] = todo;
+  }
+
+  /**
+   * get our todo from localstorage and process the string formatted value 
+   * to Javascript Object
+   */
+  private _getTODO(): Array<ITodo> {
+    return JSON.parse(window.localStorage.getItem('todos')) || [];
+  }
+
+  /**
+   * this is used to save/ update our content of our window localstorage for key `todos`
+   * @param todos 
+   */
+  private _setTodo(todos: Array<ITodo>): void {
+    window.localStorage.setItem('todos', JSON.stringify(todos));
   }
 
 }

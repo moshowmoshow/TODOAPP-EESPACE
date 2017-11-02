@@ -70,13 +70,15 @@ export class HomePage {
         {
           text: 'Yes',
           handler: () => {
-            console.log(todo);
+
+            console.log('handler has been called');
             this._todoProvider.delete(todo);
 
             // update our list
             this.todos = this._todoProvider.list();
 
             console.log("done with refresh");
+        
           }
         }
       ]
@@ -116,6 +118,7 @@ export class HomePage {
     this._todoProvider.update(todo);
     // update our list
     this.todos = this._todoProvider.list();
+
   }
 
 }

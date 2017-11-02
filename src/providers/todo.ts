@@ -10,7 +10,7 @@ import { ITodo } from '../interfaces/itodo';
 */
 @Injectable()
 export class TodoProvider {
-  // private _dataSource: Array<ITodo> = [];
+   private _dataSource: Array<ITodo> = [];
 
   constructor() {
     console.log('Hello TodoProvider Provider');
@@ -29,7 +29,17 @@ export class TodoProvider {
   }
 
   delete(todo: ITodo) {
-    this._dataSource.splice(this._dataSource.findIndex(searchedTodo => searchedTodo === todo), 1);
+    //this._dataSource.splice(this._dataSource.findIndex(searchedTodo => searchedTodo === todo), 1);
+
+    //get data from local storage and delete
+
+    let data = this._getTODO();
+
+    console.log(todo);    
+
+    console.log(data);
+    data.splice(data.findIndex(searchedTodo => searchedTodo === todo), 1);
+
   }
 
   list(completed: boolean = false): Array<ITodo> {

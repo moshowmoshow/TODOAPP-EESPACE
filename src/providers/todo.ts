@@ -35,10 +35,14 @@ export class TodoProvider {
 
     let data = this._getTODO();
 
-    console.log(todo);    
+    console.log(todo); 
+    console.log(data);    
 
+    console.log(data.findIndex(searchedTodo => searchedTodo.date === todo.date));
+     data.splice(data.findIndex(searchedTodo => searchedTodo.date === todo.date), 1);
     console.log(data);
-    data.splice(data.findIndex(searchedTodo => searchedTodo === todo), 1);
+    this._setTodo(data);
+
 
   }
 
@@ -48,6 +52,7 @@ export class TodoProvider {
   }
 
   update(todo: ITodo) {
+    
     let index = this._dataSource.findIndex(saved => saved.date === todo.date);
     this._dataSource[index] = todo;
   }

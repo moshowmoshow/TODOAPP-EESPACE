@@ -48,8 +48,6 @@ export class HomePage {
     prompt.present();
   }
 
-
-
   /**
    * this is used to save new task to our task list
    * @param title 
